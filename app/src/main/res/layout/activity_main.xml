@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="300dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="match_parent"
+            android:hint="질병명을 입력하세요"/>
+
+        <Button
+            android:id="@+id/button"
+            android:background="@drawable/disease_search_button"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="검색"
+            android:textSize="16sp"
+            android:layout_marginLeft="0px"
+            android:onClick="mOnClick"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/disease_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/disease_title"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:text="감염병 정보를 나타냅니다."/>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C3C3C3"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:text="검색 가능한 목록:"
+        >
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@drawable/disease_writer"
+            android:padding="15dp"
+            />
+
+    </ScrollView>
+
+</LinearLayout>
