@@ -3,7 +3,9 @@ package com.example.api_list_test_disease;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +42,7 @@ public class MainActivity extends Activity {
         final EditText edit = (EditText)findViewById(R.id.edit);
 
         list.setOnClickListener(new View.OnClickListener(){
+
 
             //목록 보기 코드
             public void onClick(View view){

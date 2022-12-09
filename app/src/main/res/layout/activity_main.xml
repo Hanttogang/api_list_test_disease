@@ -8,16 +8,22 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".MainActivity"
+    android:background="#2B2B2B"
     >
 
     <Button
         android:id="@+id/list"
         android:text="감염병 목록보기 및 선택"
-        android:layout_marginLeft="15dp"
-        android:background="#C3C3C3"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/disease_list_and_choice"
         android:textSize="16sp"
-        android:layout_width="350dp"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textStyle="bold"
         />
 
     <LinearLayout
@@ -25,6 +31,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="10"
+        android:textColor="#FFFFFF"
         >
 
         <EditText
@@ -32,7 +39,9 @@
             android:layout_width="300dp"
             android:layout_marginLeft="15dp"
             android:layout_height="match_parent"
-            android:hint="질병명을 입력하세요"/>
+            android:hint="질병명을 입력하세요"
+            android:textColorHint="#C8C8C8"
+            android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/search_disease"
@@ -43,7 +52,7 @@
             android:textSize="16sp"
             android:layout_marginLeft="0px"
             android:onClick="mOnClick"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#000000"/>
 
 
     </LinearLayout>
@@ -58,15 +67,16 @@
         android:layout_marginRight="30px"
         android:gravity="center"
         android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:text="감염병 정보를 나타냅니다."/>
+        android:textColor="#000000"
+        android:text="감염병 정보를 나타냅니다."
+        android:textStyle="bold"/>
 
 
     <ScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C3C3C3"
+        android:background="#2B2B2B"
         android:layout_marginLeft="30px"
         android:layout_marginRight="30px"
         android:text="검색 가능한 목록:"
