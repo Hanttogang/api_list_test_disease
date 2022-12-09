@@ -10,6 +10,16 @@
     tools:context=".MainActivity"
     >
 
+    <Button
+        android:id="@+id/list"
+        android:text="감염병 목록보기 및 선택"
+        android:layout_marginLeft="15dp"
+        android:background="#C3C3C3"
+        android:textSize="16sp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -25,7 +35,7 @@
             android:hint="질병명을 입력하세요"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/search_disease"
             android:background="@drawable/disease_search_button"
             android:layout_width="70dp"
             android:layout_height="40dp"
@@ -33,7 +43,8 @@
             android:textSize="16sp"
             android:layout_marginLeft="0px"
             android:onClick="mOnClick"
-            android:textColor="#ffffff"/>
+            android:textColor="#FFFFFF"/>
+
 
     </LinearLayout>
 

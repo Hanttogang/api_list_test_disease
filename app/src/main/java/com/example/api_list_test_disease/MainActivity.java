@@ -1,10 +1,14 @@
 package com.example.api_list_test_disease;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -32,13 +36,44 @@ public class MainActivity extends Activity {
         edit= (EditText)findViewById(R.id.edit);
         text= (TextView)findViewById(R.id.text);
 
+        final Button list = (Button) findViewById(R.id.list);
+        final EditText edit = (EditText)findViewById(R.id.edit);
+
+        list.setOnClickListener(new View.OnClickListener(){
+
+            //목록 보기 코드
+            public void onClick(View view){
+
+                AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("감염병 목록 선택하기"); //제목
+                final String[] versionArray = new String[] {"결핵","B형간염","디프테리아","파상풍","백일해","폴리오","B형 헤모필루스 인플루엔자","폐렴구균","홍역","유행성이하선염","풍진","수두","일본뇌염","인플루엔자","장티푸스","신증후군출혈열","A형간염","로타바이러스","사람유두종바이러스","수막구균","대상포진"};
+                dlg.setIcon(R.drawable.disease_panda); // 아이콘 설정
+
+                dlg.setSingleChoiceItems(versionArray, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edit.setText(versionArray[which]);
+                    }
+
+                });
+//                버튼 클릭시 동작
+                dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which) {
+                        //토스트 메시지
+                        Toast.makeText(MainActivity.this,"확인을 누르셨습니다.",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dlg.show();
+            }
+        });
+
     }
 
     //Button을 클릭했을 때 자동으로 호출되는 callback method
     public void mOnClick(View v){
 
         switch( v.getId() ){
-            case R.id.button:
+            case R.id.search_disease:
 
                 // 급하게 짜느라 소스가 지저분해요..
                 new Thread(new Runnable() {
@@ -66,7 +101,6 @@ public class MainActivity extends Activity {
 
     }
 
-
     String getXmlData(){
 
         StringBuffer buffer=new StringBuffer();
@@ -74,6 +108,78 @@ public class MainActivity extends Activity {
         String str= edit.getText().toString();//EditText에 작성된 Text얻어오기
         String vcnCd = URLEncoder.encode(str);//한글의 경우 인식이 안되기에 utf-8 방식으로 encoding
 
+
+        if(str.equals("결핵")){ //결핵
+            vcnCd = "01";
+        }
+        else if(str.equals("B형간염")){ //B형간염
+            vcnCd = "02";
+        }
+        else if(str.equals("디프테리아")){ //디프테리아
+            vcnCd = "03";
+        }
+        else if(str.equals("폴리오")){ //폴리오
+            vcnCd = "04";
+        }
+        else if(str.equals("B형 헤모필루스 인플루엔자")){ //B형 헤모필루스 인플루엔자
+            vcnCd = "05";
+        }
+        else if(str.equals("폐렴구균")){ //폐렴구균
+            vcnCd = "06";
+        }
+        else if(str.equals("홍역")){ //홍역
+            vcnCd = "07";
+        }
+        else if(str.equals("수두")){ //수두
+            vcnCd = "08";
+        }
+        else if(str.equals("일본뇌염")){ //일본뇌염
+            vcnCd = "09";
+        }
+        else if(str.equals("인플루엔자")){ //인플루엔자
+            vcnCd = "10";
+        }
+        else if(str.equals("장티푸스")){ //장티푸스
+            vcnCd = "11";
+        }
+        else if(str.equals("신증후군출혈열")){ //신증후군출혈열
+            vcnCd = "12";
+        }
+        else if(str.equals("A형간염")){ //A형간염
+            vcnCd = "13";
+        }
+        else if(str.equals("로타바이러스")){ //로타바이러스
+            vcnCd = "14";
+        }
+        else if(str.equals("사람유두종바이러스")){ //사람유두종바이러스
+            vcnCd = "15";
+        }
+        else if(str.equals("수막구균")){ //수막구균
+            vcnCd = "16";
+        }
+        else if(str.equals("대상포진")){ //대상포진
+            vcnCd = "17";
+        }
+        else if(str.equals("파상풍")){ //파상풍
+            vcnCd = "18";
+        }
+        else if(str.equals("백일해")){ //백일해
+            vcnCd = "19";
+        }
+        else if(str.equals("유행성이하선염")){ //유행성이하선염
+            vcnCd = "20";
+        }
+        else if(str.equals("풍진")){ //풍진
+            vcnCd = "21";
+        }
+        else{
+            buffer.append("지원하지않는 감염병 입니다.\n");
+        }
+
+        /*
+        if(vcnCd.equals("%EA%B2%B0%ED%95%B5")){ //결핵
+            vcnCd = "01";
+        }
         if(vcnCd.equals("%EA%B2%B0%ED%95%B5")){ //결핵
             vcnCd = "01";
         }
@@ -140,6 +246,7 @@ public class MainActivity extends Activity {
         else{
             buffer.append("지원하지않는 감염병 입니다.\n");
         }
+        */
 
         String queryUrl="http://apis.data.go.kr/1790387/vcninfo/getVcnInfo?ServiceKey="//요청 URL
                 + key + "&vcnCd=" + vcnCd;
@@ -211,5 +318,4 @@ public class MainActivity extends Activity {
         return buffer.toString();//StringBuffer 문자열 객체 반환
 
     }
-
 }
